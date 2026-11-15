@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0A0A">
+
+    <!-- Фонові елементи фільму -->
+    <com.flaviofaria.kenburnsview.KenBurnsView
+        android:id="@+id/kbvPoster"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#88000000" />
+
+    <!-- 3. Ефект завантаження та сріблястого відблиску тексту (Shimmer) -->
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:padding="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuyTicket"
+        app:shimmer_auto_start="true"
+        app:shimmer_duration="1500"
+        app:shimmer_base_color="#7A756C"
+        app:shimmer_highlight_color="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ІНТЕРСТЕЛЛАР (2014)"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Коли час людства на Землі добігає кінця, команда дослідників бере на себе найважливішу місію в історії людства..."
+                android:textColor="#DDDDDD"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <Button
+        android:id="@+id/btnBuyTicket"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#E50914"
+        android:text="ПРИДБАТИ КВИТОК"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- ========================================== -->
+    <!-- КАСТОМНИЙ ОВЕРЛЕЙ ОНБОРДИНГУ (Замість плагіна) -->
+    <!-- ========================================== -->
+    <View
+        android:id="@+id/tutorialOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B3000000"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/tutorialCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#1E1E1E"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuyTicket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💡 Підказка для вас"
+                android:textColor="#E50914"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Натисніть на червону кнопку нижче, щоб успішно забронювати місце на прем'єру фільму!"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnGotIt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#333333"
+                android:text="Зрозуміло"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Конфетті -->
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id="@+id/konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
